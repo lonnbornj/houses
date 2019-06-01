@@ -9,10 +9,12 @@ import networkx as nx
 import matplotlib.pyplot as plt
 from Classes import *
 
+save_flag = False
+filename ="example.pdf"
 
 def get_people(entry):
 	"""
-	Splits up an `people in` or `people_out` entry in an input line to extract each comma-separated person.
+	Splits up a `people in` (`people_out`) entry in an input line to extract each comma-separated person moving in (out).
 	"""
 	try:
 		return entry.split(",")
@@ -38,6 +40,10 @@ def make_House(name):
 		return new_house
 
 def get_or_make_obj(name, ls, obj_type):
+	"""
+	Fetches an object based on its name from a list of objects, or creates an `obj_type`
+	object if one of that name doesn't already exist
+	"""
 	obj = next((i for i in ls if i.name == name), None)
 	if obj is None:
 		if obj_type=="person":
@@ -115,8 +121,11 @@ def main():
 	nx.draw_networkx_labels(G, pos, labels, font_size=15, font_color='white', font_weight='normal')
 	nx.draw(G, pos, edge_color=colours)
 	fig.set_facecolor("#4b4b4b")
-	# plt.show()
-	plt.savefig("example.pdf", facecolor="#4b4b4b")
+
+	if save_flag:
+		plt.savefig("{}.pdf".format(filename), facecolor="#4b4b4b")
+	else:
+		plt.show()
 
 if __name__=="__main__":
 	main()

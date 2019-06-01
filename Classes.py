@@ -4,7 +4,6 @@ import sys
 class Person():
 	"""
 	A Person object collects `connections` to people who live in the same House at the same time. These connections form the edges of the network.
-
 	"""
 	newid = itertools.count()
 	def __init__(self, name):
