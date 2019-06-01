@@ -1,8 +1,14 @@
+"""
+Author: Jack Lonnborn
+Date: June 2019
+
+This program reads in data about people (and animals) moving in and out of different sharehouses, and creates a graph connecting people who have lived together. The nodes of the graph are people (animals), and an edge connecting two nodes is colour-coded by the house that those two people lived in together.
+"""
+
 import networkx as nx
 import matplotlib.pyplot as plt
 from Classes import *
 
-plt.close()
 
 def get_people(entry):
 	"""
@@ -104,12 +110,13 @@ def main():
 	colours = [G[u][v][0]['color'] for u,v in G.edges()]
 	pos, labels = get_node_labels(G)
 
-	fig = plt.figure()
+	fig = plt.figure(figsize=(24,24))
 	nx.draw_networkx_nodes(G, pos, alpha=0.3)
-	nx.draw_networkx_labels(G, pos, labels, font_size=10, font_color='white', font_weight='normal')
+	nx.draw_networkx_labels(G, pos, labels, font_size=15, font_color='white', font_weight='normal')
 	nx.draw(G, pos, edge_color=colours)
 	fig.set_facecolor("#4b4b4b")
-	plt.show()
+	# plt.show()
+	plt.savefig("example.pdf", facecolor="#4b4b4b")
 
 if __name__=="__main__":
 	main()
