@@ -1,0 +1,32 @@
+ADDRESS;PEOPLE IN;PEOPLE OUT
+Victoria St;Jules;-
+Victoria St;Jimi;-
+Victoria St;Jack L;-
+Victoria St;Smokey;-
+Victoria St;Glen;-
+Neukoelln;Jimi;-
+Neukoelln;Elly;-
+Neukoelln;Jack L;-
+Neukoelln;Gabi;-
+King St;Sam;-
+King St;Bridget;-
+King St;Jo;-
+King St;Jack L;-
+King St;Gabby cat;-
+King St;Alex P;Jo
+King St;Anna;Sam
+Degraves St;Elly;-
+Degraves St;Jack L;-
+Degraves St;Jack H;-
+Degraves St;Alex;-
+Degraves St;Greg;-
+Degraves St;Mes;-
+Degraves St;Jacob;-
+Degraves St;Gabby cat;-
+Degraves St;Reuben;-
+Degraves St;-;Gabby cat
+Degraves St;-;Greg
+Degraves St;Antony;Mes,Jacob,Reuben
+Degraves St;Bobbi,Flynn;Elly
+Degraves St;Cat Bush;-
+Degraves St;Sam;Jack H
