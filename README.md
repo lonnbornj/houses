@@ -26,4 +26,4 @@ Write your data file and save it as data.txt
 Then run with:
 python3 map.py
 
-![example network](https://github.com/lonnbornj/houses/blob/master/example.pdf)
+![example network](example.png)
