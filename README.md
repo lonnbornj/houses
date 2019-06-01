@@ -13,17 +13,17 @@ The input data should be formatted as follows:
 
 E.g.:
 
-Degraves St;Elly,Greg;-
-Degraves St;Jack L;-
-Degraves St;Alex,Greg
-Degraves St;-;Elly,Jack L
+Degraves St;Elly,Greg;-  
+Degraves St;Jack L;-  
+Degraves St;Alex,Greg  
+Degraves St;-;Elly,Jack L  
 
 In the example, Elly and Greg move in; Jack L moves in; Alex moves in and Greg moves out; Elly and Jack move out.
 
 ### Running the program
 
-Write your data file and save it as data.txt
-Then run with:
+Write your data file and save it as data.txt  
+Then run with:  
 python3 map.py
 
 ![example network](example.png)
