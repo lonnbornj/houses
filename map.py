@@ -78,13 +78,15 @@ def make_network():
 
 def get_node_labels(G):
 	"""
-	Returns the position and labels of all nodes in the graph
+	Returns dicts of the position and labels of all nodes in the graph
 	"""
 	pos = nx.spring_layout(G)
 	labels={}
 	for node in G.nodes():
+		# find the name associated with the id attached to this node:
 		name = next((i.name for i in people if i.id == node))
 		labels[node] = name
+	print(pos, labels)
 	return pos, labels
 
 people = []

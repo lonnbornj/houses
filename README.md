@@ -4,10 +4,10 @@ This program reads in data about people (and animals) moving in and out of diffe
 
 The input data should be formatted as follows:
 1. Each line represents an "event" in a particular house; e.g. someone moving in, someone moving out, or both.
-2. There are three entries to a line, separated by semi-colons (;). These entries are:
-	i. the house name, address or other label;
-	ii. people moving in;
-	iii. people moving out.
+2. There are three entries to a line, separated by semi-colons (;). These entries are:  
+	i. the house name, address or other label;  
+	ii. people moving in;  
+	iii. people moving out.  
 3. Where multiple people move in or out at the same time, their names should be separated by commas (,) but no spaces.
 4. If nobody moves in (or out) in a particular moving event, put a single dash (-) for that entry.
 
