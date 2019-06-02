@@ -7,10 +7,11 @@ This program reads in data about people (and animals) moving in and out of diffe
 
 import networkx as nx
 import matplotlib.pyplot as plt
+from matplotlib.lines import Line2D
 from Classes import *
 
-save_flag = False
-filename ="example.pdf"
+save_flag = True
+filename ="example.png"
 
 def get_people(entry):
 	"""
@@ -57,7 +58,8 @@ def make_edge_colours(houses):
 	Constructs a dictionary of house names with associated colours, for colouring edges in the graph.
 	Colours are from: https://learnui.design/tools/data-color-picker.html
 	"""
-	colours_vec = ['#003f5c', '#2f4b7c', '#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600']
+	colours_vec = ['#003f5c', '#2f4b7c', '#665191', '#a05195', '#d45087', '#f95d6a', '#ff7c43', '#ffa600',
+					'#7f95d1', '#ffc0be' ]
 	colours = {house.name: colour for house, colour in zip(houses, colours_vec)}
 	return colours
 
@@ -86,8 +88,12 @@ def get_node_labels(G):
 		# find the name associated with the id attached to this node:
 		name = next((i.name for i in people if i.id == node))
 		labels[node] = name
-	print(pos, labels)
 	return pos, labels
+
+def make_proxy(clr, mappable, **kwargs):
+	# adapted from:
+	# https://stackoverflow.com/questions/48065567/legend-based-on-edge-color-in-networkx
+    return Line2D([0, 1], [0, 1], color=clr, **kwargs)
 
 people = []
 houses = []
@@ -96,6 +102,7 @@ def main():
 	with open("data.txt", "r") as f:
 		next(f)
 		for line in f:
+			print(line)
 			data = line.strip().split(";")
 
 			house = get_or_make_obj(data[0], houses, "house")
@@ -115,17 +122,28 @@ def main():
 	people.remove(dash)
 
 	G = make_network()
+	colours_dict = make_edge_colours(houses)
 	colours = [G[u][v][0]['color'] for u,v in G.edges()]
 	pos, labels = get_node_labels(G)
 
 	fig = plt.figure(figsize=(24,24))
-	nx.draw_networkx_nodes(G, pos, alpha=0.3)
-	nx.draw_networkx_labels(G, pos, labels, font_size=15, font_color='white', font_weight='normal')
-	nx.draw(G, pos, edge_color=colours)
+	# use nx.draw with invisible nodes/edges to add to matplotlib `fig`.
+	# this is necessary to set the facecolor
+	nx.draw(G, pos, node_color="#4b4b4b", edge_color="#4b4b4b")
+	# add the nodes, node labels (i.e. people's names), and colour-coded edges:
+	nx.draw_networkx_nodes(G, pos, alpha=0.3, facecolor="#4b4b4b")
+	nx.draw_networkx_labels(G, pos, labels, font_size=10, font_color='white', font_weight='normal', facecolor="#4b4b4b")
+	e = nx.draw_networkx_edges(G, pos=pos, edge_color=colours, facecolor="#4b4b4b")
+
+	# make the legend
+	proxies = [make_proxy(clr, e, lw=5) for clr in colours_dict.values()]
+	leg_labels = ["{}".format(house) for house in colours_dict.keys()]
+	plt.legend(proxies, leg_labels)
+
 	fig.set_facecolor("#4b4b4b")
 
 	if save_flag:
-		plt.savefig("{}.pdf".format(filename), facecolor="#4b4b4b")
+		plt.savefig("{}".format(filename), facecolor="#4b4b4b")
 	else:
 		plt.show()
 
