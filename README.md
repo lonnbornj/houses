@@ -23,6 +23,8 @@ In the example, Elly and Greg move in; Jack L moves in; Alex moves in and Greg m
 ### Running the program
 
 Write your data file and save it as data.txt  
+Install the required packages:
+pip install -r requirements.txt
 Then run with:  
 python3 map.py
 
