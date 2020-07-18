@@ -1,4 +1,5 @@
 # houses
+June 2019
 
 This program reads in data about people (and animals) moving in and out of different share-houses, and creates a graph connecting people who have lived together. The nodes of the graph are people (animals), and an edge connecting two nodes is colour-coded by the house that those two people lived in together.
 
